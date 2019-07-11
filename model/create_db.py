@@ -1,4 +1,4 @@
-from db import get_db
+from db_init import get_db
 from indicacoes import Indicacoes
 from alunos import Alunos
 from pacientes import Pacientes

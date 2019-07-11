@@ -1,5 +1,5 @@
 import peewee as pw
-from db import get_db
+from db_init import get_db
 from alunos import Alunos
 from indicacoes import Indicacoes
 
