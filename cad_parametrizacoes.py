@@ -17,7 +17,7 @@ class CadParametrizacoes(QDialog):
             self.alert("Preencha a tensão")
             return False
 
-        try
+        try:
             v = float(self.ui.edtTensao.text())
         except:
             self.alert("Tensão inválida")
@@ -27,7 +27,7 @@ class CadParametrizacoes(QDialog):
             self.alert("Preencha a corrente")
             return False
 
-        try
+        try:
             v = float(self.ui.edtCorrente.text())
         except:
             self.alert("Corrente inválida")
@@ -37,7 +37,7 @@ class CadParametrizacoes(QDialog):
             self.alert("Preencha o tempo")
             return False
 
-        try
+        try:
             v = float(self.ui.edtTempo.text())
         except:
             self.alert("Tempo inválido")
@@ -47,10 +47,10 @@ class CadParametrizacoes(QDialog):
             self.alert("Preencha o mGcym")
             return False
 
-        try
+        try:
             v = float(self.ui.edtMgycm.text())
         except:
-            self.alert("mGcym inválido")
+            self.alert("mGycm inválido")
             return False
         
         return True
@@ -63,17 +63,17 @@ class CadParametrizacoes(QDialog):
             try:
                 if not self.parametrizacao:
                     self.parametrizacao = Parametrizacoes.create(
-                        tensao=float(self.ui.edtTensao.text())
-                        corrente=float(self.ui.edtCorrente.text())
-                        tempo=float(self.ui.edtTempo.text())
-                        mgycm=float(self.ui.edtMgycm.text())
-                        tamanho=str(self.ui.cboTamanho.text()))
+                        tensao=float(self.ui.edtTensao.text()),
+                        corrente=float(self.ui.edtCorrente.text()),
+                        tempo=float(self.ui.edtTempo.text()),
+                        mgycm=float(self.ui.edtMgycm.text()),
+                        tamanho=str(self.ui.cboTamanho.currentText()))
                 else:
                     self.parametrizacao.tensao = float(self.ui.edtTensao.text())
                     self.parametrizacao.corrente = float(self.ui.edtCorrente.text())
                     self.parametrizacao.tempo = float(self.ui.edtTempo.text())
                     self.parametrizacao.mgycm = float(self.ui.edtMgycm.text())
-                    self.parametrizacao.tamanho = str(self.ui.cboTamanho.text())
+                    self.parametrizacao.tamanho = str(self.ui.cboTamanho.currentText())
                     self.parametrizacao.save()
             except Exception as e:
                 self.alert(str(e))

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CadPanoramica</class>
- <widget class="QMainWindow" name="CadPanoramica">
+ <class>CadPanoramicas</class>
+ <widget class="QMainWindow" name="CadPanoramicas">
   <property name="windowModality">
    <enum>Qt::WindowModal</enum>
   </property>
@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1009</width>
-    <height>634</height>
+    <height>663</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,10 +40,17 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLineEdit" name="edtPaciente"/>
+         <widget class="QLineEdit" name="edtPaciente">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnLimparPaciente">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Limpar</string>
           </property>
@@ -51,6 +58,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnPesqPaciente">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Pesquisar</string>
           </property>
@@ -68,10 +78,17 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QLineEdit" name="edtAluno"/>
+         <widget class="QLineEdit" name="edtAluno">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnLimparAluno">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Limpar</string>
           </property>
@@ -79,6 +96,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="btnPesqAluno">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Pesquisar</string>
           </property>
@@ -94,7 +114,21 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="edtValor"/>
+       <widget class="QLineEdit" name="edtValor">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="cbEntregue">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Entregue</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_5">
@@ -104,7 +138,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QDateEdit" name="edtEntrega"/>
+       <widget class="QDateEdit" name="edtEntrega">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_6">
@@ -114,7 +152,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="edtMotivo"/>
+       <widget class="QLineEdit" name="edtMotivo">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_7">
@@ -125,6 +167,9 @@
       </item>
       <item>
        <widget class="QComboBox" name="cboTipo">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <item>
          <property name="text">
           <string>Normal</string>
@@ -176,6 +221,9 @@
       </item>
       <item>
        <widget class="QComboBox" name="cboEspecializacao">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <item>
          <property name="text">
           <string>Nenhuma</string>
@@ -206,7 +254,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="edtRegiao">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_10">
@@ -217,6 +269,9 @@
       </item>
       <item>
        <widget class="QComboBox" name="cboModelo">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <item>
          <property name="text">
           <string>Modelo 1</string>
@@ -266,6 +321,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnParametrizacao">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>Parametrização</string>
         </property>
@@ -284,6 +342,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnSalvar">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>&amp;Salvar</string>
         </property>
@@ -298,6 +359,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnRemover">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>&amp;Remover</string>
         </property>

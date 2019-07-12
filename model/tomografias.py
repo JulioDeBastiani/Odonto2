@@ -1,7 +1,8 @@
 import peewee as pw
-from db_init import get_db
-from pacientes import Pacientes
-from parametrizacoes import Parametrizacoes
+from .db_init import get_db
+from .pacientes import Pacientes
+from .parametrizacoes import Parametrizacoes
+from .alunos import Alunos
 
 db = get_db()
 

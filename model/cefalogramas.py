@@ -1,7 +1,8 @@
 import peewee as pw
-from db_init import get_db
-from pacientes import Pacientes
-from parametrizacoes import Parametrizacoes
+from .db_init import get_db
+from .pacientes import Pacientes
+from .parametrizacoes import Parametrizacoes
+from .alunos import Alunos
 
 db = get_db()
 
@@ -12,7 +13,7 @@ class Cefalogramas(pw.Model):
     data_entrega = pw.DateField(null=True)
     motivo = pw.CharField(null=True)
     parametrizacao = pw.ForeignKeyField(Parametrizacoes, backref='panoramica', on_delete='CASCADE')
-    modelo = pw.IntegerField()
+    modelo = pw.CharField()
     # 1..4
 
     class Meta:

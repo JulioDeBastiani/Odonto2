@@ -1,7 +1,8 @@
 import peewee as pw
-from db_init import get_db
-from pacientes import Pacientes
-from parametrizacoes import Parametrizacoes
+from .db_init import get_db
+from .pacientes import Pacientes
+from .parametrizacoes import Parametrizacoes
+from .alunos import Alunos
 
 db = get_db()
 
@@ -17,7 +18,7 @@ class Panoramicas(pw.Model):
     especializacao = pw.CharField()
     # 'Topo', 'Oclusao', 'Idade Ossea'
     regiao = pw.CharField()
-    modelo = pw.IntegerField()
+    modelo = pw.CharField()
     # 1..9
 
     class Meta:

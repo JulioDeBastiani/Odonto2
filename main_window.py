@@ -4,6 +4,7 @@ from ui.ui_main_window import Ui_MainWindow
 from cad_indicacoes import CadIndicacoes
 from cad_alunos import CadAlunos
 from cad_pacientes import CadPacientes
+from cad_panoramicas import CadPanoramicas
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -25,9 +26,14 @@ class MainWindow(QMainWindow):
             pacientes = CadPacientes()
             pacientes.show()
 
+        def on_cad_panoramicas():
+            panoramicas = CadPanoramicas()
+            panoramicas.show()
+
         self.ui.actionIndica_es.triggered.connect(on_cad_indicacoes)
         self.ui.actionAlunos.triggered.connect(on_cad_alunos)
         self.ui.actionPacientes.triggered.connect(on_cad_pacientes)
+        self.ui.actionPanoramicas.triggered.connect(on_cad_panoramicas)
 
     def keyPressEvent(self, event):
         if not event.isAutoRepeat():

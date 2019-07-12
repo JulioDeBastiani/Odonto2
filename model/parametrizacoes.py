@@ -1,5 +1,5 @@
 import peewee as pw
-from db_init import get_db
+from .db_init import get_db
 
 db = get_db()
 
