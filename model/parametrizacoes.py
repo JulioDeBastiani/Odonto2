@@ -4,7 +4,6 @@ from db_init import get_db
 db = get_db()
 
 class Parametrizacoes(pw.Model):
-    nome = pw.CharField(unique=True)
     tensao = pw.DoubleField()
     corrente = pw.DoubleField()
     tempo = pw.DoubleField()
