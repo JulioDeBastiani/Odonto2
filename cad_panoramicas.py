@@ -9,6 +9,7 @@ from model.parametrizacoes import Parametrizacoes
 from pesq_pacientes import PesqPacientes
 from pesq_alunos import PesqAlunos
 from cad_parametrizacoes import CadParametrizacoes
+from pesq_panoramicas import PesqPanoramicas
 
 class CadPanoramicas(QMainWindow):
     def __init__(self):
@@ -28,6 +29,7 @@ class CadPanoramicas(QMainWindow):
         self.ui.edtPaciente.clear()
         self.ui.edtAluno.clear()
         self.ui.edtValor.clear()
+        self.ui.cbEntregue.setChecked(False)
         self.ui.edtEntrega.clear()
         self.ui.cboTipo.setCurrentIndex(0)
         self.ui.cboEspecializacao.setCurrentIndex(0)
@@ -49,8 +51,6 @@ class CadPanoramicas(QMainWindow):
             except:
                 self.alert("Valor inválido")
                 return False
-
-            # TODO a entrega eh nulavel
 
             if not self.parametrizacao:
                 self.alert("Preencha a parametrização")
@@ -106,26 +106,45 @@ class CadPanoramicas(QMainWindow):
             self.indicacao = None
 
         def on_pesquisar():
-            # pesq = PesqPacientes()
-            # id = pesq.pesquisar()
+            pesq = PesqPanoramicas()
+            id = pesq.pesquisar()
 
-            # if id:
-            #     self.paciente = Pacientes.get(Pacientes.id == int(id))
-            #     self.indicacao = self.paciente.indicacao if self.paciente else None
+            if id:
+                self.panoramica = Panoramicas.get(Panoramicas.id == int(id))
+                self.paciente = self.panoramica.paciente
+                self.aluno = self.panoramica.aluno
+                self.parametrizacao = self.panoramica.parametrizacao
 
-            # if self.paciente:
-            #     self.ui.edtId.setText(str(self.paciente.id))
-            #     self.ui.edtNome.setText(self.paciente.nome)
-            #     self.ui.edtNasc.setDate(self.paciente.nascimento)
-            #     self.ui.edtClinViewId.setText(self.paciente.clinview_id)
+            if self.panoramica:
+                self.ui.edtId.setText(str(self.panoramica.id))
+                    
+                if self.panoramica.valor:
+                    self.ui.edtValor.setText(str(self.panoramica.valor))
 
-            #     if self.indicacao:
-            #         self.ui.edtIndicacao.setText(self.indicacao.nome)
-            #     else:
-            #         self.ui.edtIndicacao.clear()
+                self.ui.cbEntregue.setChecked(self.panoramica.data_entrega != None)
 
-            #     self.ui.set_mode(True)
-            pass
+                if self.panoramica.data_entrega:
+                    self.ui.edtEntrega.setDate(self.panoramica.data_entrega)
+
+                self.ui.edtMotivo.setText(self.panoramica.motivo)
+                self.ui.edtRegiao.setText(self.panoramica.regiao)
+
+                index = self.ui.cboTipo.findText(self.panoramica.tipo)
+                if index >= 0:
+                    self.ui.cboTipo.setCurrentIndex(index)
+
+                index = self.ui.cboEspecializacao.findText(self.panoramica.especializacao)
+                if index >= 0:
+                    self.ui.cboEspecializacao.setCurrentIndex(index)
+
+                index = self.ui.cboModelo.findText(self.panoramica.modelo)
+                if index >= 0:
+                    self.ui.cboModelo.setCurrentIndex(index)
+
+                self.ui.edtPaciente.setText(self.paciente.nome)
+                self.ui.edtAluno.setText(self.aluno.nome)
+
+                self.ui.set_mode(True)
 
         def on_remover():
             if self.panoramica:
@@ -153,6 +172,8 @@ class CadPanoramicas(QMainWindow):
             if self.panoramica:
                 if self.panoramica.valor:
                     self.ui.edtValor.setText(str(self.panoramica.valor))
+
+                self.ui.cbEntregue.setChecked(self.panoramica.data_entrega != None)
 
                 if self.panoramica.data_entrega:
                     self.ui.edtEntrega.setDate(self.panoramica.data_entrega)
