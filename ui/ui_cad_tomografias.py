@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_CadTomografias(object):
     def setupUi(self, CadTomografias):
         CadTomografias.setObjectName("CadTomografias")
-        CadTomografias.resize(806, 720)
+        CadTomografias.resize(806, 721)
         self.centralwidget = QtWidgets.QWidget(CadTomografias)
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
@@ -159,6 +159,7 @@ class Ui_CadTomografias(object):
         self.horizontalLayout_4.addLayout(self.verticalLayout_3)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.btnParametrizacao = QtWidgets.QPushButton(self.centralwidget)
+        self.btnParametrizacao.setEnabled(False)
         self.btnParametrizacao.setObjectName("btnParametrizacao")
         self.verticalLayout.addWidget(self.btnParametrizacao)
         self.horizontalLayout.addLayout(self.verticalLayout)

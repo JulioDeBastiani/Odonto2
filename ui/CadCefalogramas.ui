@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CadTomografias</class>
- <widget class="QMainWindow" name="CadTomografias">
+ <class>CadCefalogramas</class>
+ <widget class="QMainWindow" name="CadCefalogramas">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>806</width>
-    <height>721</height>
+    <width>684</width>
+    <height>501</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Cefalogramas</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Id</string>
         </property>
@@ -28,7 +31,7 @@
        <widget class="QLineEdit" name="edtId"/>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label">
         <property name="text">
          <string>Paciente</string>
         </property>
@@ -128,7 +131,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="label_7">
         <property name="text">
          <string>Data de Entrega</string>
         </property>
@@ -156,213 +159,38 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_7">
+       <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Tipo</string>
+         <string>Modelo</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="cboTipo">
+       <widget class="QComboBox" name="cboModelo">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <item>
          <property name="text">
-          <string>Maxila</string>
+          <string>Modelo 1</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Mandibula</string>
+          <string>Modelo 2</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>ATM</string>
+          <string>Modelo 3</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Segmento</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Elemento</string>
+          <string>Modelo 4</string>
          </property>
         </item>
        </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Especialização</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="cboEspecializacao">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <item>
-         <property name="text">
-          <string>Nanhuma</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Ramos Mandibulares</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Oclusao</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Abertura</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_9">
-        <property name="text">
-         <string>Região</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="edtRegiao">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>Elemento</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="edtElemento">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item>
-           <widget class="QLabel" name="label_13">
-            <property name="text">
-             <string>Resolução</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="cboResolucao">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <item>
-             <property name="text">
-              <string>Baixa</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Média</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Alta</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_12">
-            <property name="text">
-             <string>Alvo</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="cboAlvo">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <item>
-             <property name="text">
-              <string>Alvo</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Dente</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QLabel" name="label_11">
-            <property name="text">
-             <string>Proporção</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="cboProporcao">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <item>
-             <property name="text">
-              <string>5x5</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>6x8</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>8x8</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>8x15</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>13x15</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
       </item>
       <item>
        <widget class="QPushButton" name="btnParametrizacao">
@@ -441,7 +269,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>806</width>
+     <width>684</width>
      <height>22</height>
     </rect>
    </property>
