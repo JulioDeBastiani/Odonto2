@@ -7,6 +7,7 @@ db = get_db()
 
 class Tomografias(pw.Model):
     paciente = pw.ForeignKeyField(Pacientes, backref='panoramicas', on_delete='CASCADE')
+    aluno = pw.ForeignKeyField(Alunos, backref='tomografias', on_delete='CASCADE', null=True)
     valor = pw.DoubleField(null=True)
     data_entrega = pw.DateField(null=True)
     motivo = pw.CharField(null=True)
