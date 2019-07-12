@@ -136,6 +136,10 @@ class CadPacientes(QMainWindow):
             else:
                 self.ui.edtIndicacao.clear()
 
+        def on_limpar_indicacoes():
+            self.indicacao = None
+            self.ui.edtIndicacao.clear()
+
         self.ui.btnNovo.clicked.connect(on_novo)
         self.ui.btnSalvar.clicked.connect(on_salvar)
         self.ui.btnPesquisar.clicked.connect(on_pesquisar)
@@ -143,6 +147,7 @@ class CadPacientes(QMainWindow):
         self.ui.btnSair.clicked.connect(on_sair)
         self.ui.edtId.editingFinished.connect(on_id_editing_finished)
         self.ui.btnPesqIndicacao.clicked.connect(on_pesq_indicacao)
+        self.ui.btnLimpar.clicked.connect(on_limpar_indicacoes)
 
     def get_next_id(self):
         mid = Pacientes.select(pw.fn.Max(Pacientes.id)).scalar()

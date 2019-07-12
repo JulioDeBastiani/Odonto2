@@ -51,6 +51,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="btnLimparIndicacoes">
+       <property name="text">
+        <string>Limpar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="btnPesqIndicacao">
        <property name="text">
         <string>Pesquisar</string>

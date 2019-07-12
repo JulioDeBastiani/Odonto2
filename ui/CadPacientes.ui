@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
+    <width>530</width>
     <height>331</height>
    </rect>
   </property>
@@ -82,6 +82,13 @@
          <widget class="QLineEdit" name="edtIndicacao">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnLimpar">
+          <property name="text">
+           <string>Limpar</string>
           </property>
          </widget>
         </item>
@@ -164,7 +171,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>424</width>
+     <width>530</width>
      <height>22</height>
     </rect>
    </property>
