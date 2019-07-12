@@ -35,9 +35,9 @@ class CadTomografias(QMainWindow):
         self.ui.cboEspecializacao.setCurrentIndex(0)
         self.ui.edtRegiao.clear()
         self.ui.edtElemento.clear()
-        self.ui.cboProporcao.clear()
-        self.ui.cboAlvo.clear()
-        self.ui.cboResolucao.clear()
+        self.ui.cboProporcao.setCurrentIndex(0)
+        self.ui.cboAlvo.setCurrentIndex(0)
+        self.ui.cboResolucao.setCurrentIndex(0)
 
     def __validate(self):
             if not self.paciente:
@@ -84,7 +84,6 @@ class CadTomografias(QMainWindow):
                         tipo=str(self.ui.cboTipo.currentText()),
                         especializacao=str(self.ui.cboEspecializacao.currentText()),
                         regiao=str(self.ui.edtRegiao.text()),
-                        modelo=str(self.ui.cboModelo.currentText()),
                         elemento=str(self.ui.edtElemento.text()),
                         proporcao=str(self.ui.cboProporcao.currentText()),
                         alvo=str(self.ui.cboAlvo.currentText()),
@@ -101,7 +100,6 @@ class CadTomografias(QMainWindow):
                     self.tomografia.tipo = str(self.ui.cboTipo.currentText())
                     self.tomografia.especializacao = str(self.ui.cboEspecializacao.currentText())
                     self.tomografia.regiao = str(self.ui.edtRegiao.text())
-                    self.tomografia.modelo = str(self.ui.cboModelo.currentText())
                     self.tomografia.elemento = str(self.ui.edtElemento.text())
                     self.tomografia.proporcao = str(self.ui.cboProporcao.currentText())
                     self.tomografia.alvo = str(self.ui.cboAlvo.currentText())
@@ -185,7 +183,7 @@ class CadTomografias(QMainWindow):
                 if self.tomografia.valor:
                     self.ui.edtValor.setText(str(self.tomografia.valor))
 
-                self.ui.chkEntregue.setChecked(self.panoramica.data_entrega != None)
+                self.ui.chkEntregue.setChecked(self.tomografia.data_entrega != None)
 
                 if self.tomografia.data_entrega:
                     self.ui.edtEntrega.setDate(self.tomografia.data_entrega)
