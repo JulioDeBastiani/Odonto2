@@ -1,14 +1,14 @@
 import peewee as pw
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.QtCore import Qt
-from ui.ui_pesq_indicacoes import Ui_PesqIndicacoes
-from model.indicacoes import Indicacoes
+from ui.ui_pesq_alunos import Ui_PesqAlunos
+from model.alunos import Alunos
 
-class PesqIndicacoes(QDialog):
+class PesqAlunos(QDialog):
     def __init__(self):
         super().__init__()
         self.setModal(True)
-        self.ui = Ui_PesqIndicacoes()
+        self.ui = Ui_PesqAlunos()
         self.ui.setupUi(self)
         self.ui.tableWidget.setColumnCount(2)
         self.ui.tableWidget.setHorizontalHeaderLabels(['Id', 'Nome'])
@@ -38,9 +38,9 @@ class PesqIndicacoes(QDialog):
             self.ui.tableWidget.removeRow(0)
 
         if nome:
-            rows = Indicacoes.select().where(pw.fn.Upper(Indicacoes.nome) % pw.fn.Upper(f'%{nome}%'))
+            rows = Alunos.select().where(pw.fn.Upper(Alunos.nome) % pw.fn.Upper(f'%{nome}%'))
         else:
-            rows = Indicacoes.select()
+            rows = Alunos.select()
 
         for row in rows:
             rowPosition = self.ui.tableWidget.rowCount()

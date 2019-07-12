@@ -1,16 +1,16 @@
 import peewee as pw
 from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from PyQt5.QtCore import Qt
-from ui.ui_cad_indicacoes import Ui_CadIndicacoes
-from model.indicacoes import Indicacoes
-from pesq_indicacoes import PesqIndicacoes
+from ui.ui_cad_alunos import Ui_CadAlunos
+from model.alunos import Alunos
+from pesq_alunos import PesqAlunos
 
-class CadIndicacoes(QMainWindow):
+class CadAlunos(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowFlags(Qt.WindowStaysOnTopHint)
-        self.indicacao = None
-        self.ui = Ui_CadIndicacoes()
+        self.aluno = None
+        self.ui = Ui_CadAlunos()
         self.ui.setupUi(self)
         self.__setupEvents()
         self.ui.edtId.setText(str(self.get_next_id()))
@@ -26,34 +26,38 @@ class CadIndicacoes(QMainWindow):
                 self.alert("Preencha o nome")
                 return
 
-            if not self.indicacao:
-                self.indicacao = Indicacoes.create(nome=str(self.ui.edtNome.text()))
-            else:
-                self.indicacao.nome = str(self.ui.edtNome.text())
-                self.indicacao.save()
+            try:
+                if not self.aluno:
+                    self.aluno = Alunos.create(nome=str(self.ui.edtNome.text()))
+                else:
+                    self.aluno.nome = str(self.ui.edtNome.text())
+                    self.aluno.save()
+            except Exception as e:
+                self.alert(str(e))
+                return
 
             self.ui.set_mode(False)
             self.ui.edtId.setText(str(self.get_next_id()))
             self.ui.edtNome.clear()
-            self.indicacao = None
+            self.aluno = None
 
         def on_pesquisar():
-            pesq = PesqIndicacoes()
+            pesq = PesqAlunos()
             id = pesq.pesquisar()
 
             if id:
-                self.indicacao = Indicacoes.get(Indicacoes.id == int(id))
+                self.aluno = Alunos.get(Alunos.id == int(id))
 
-            if self.indicacao:
-                self.ui.edtId.setText(str(self.indicacao.id))
-                self.ui.edtNome.setText(self.indicacao.nome)
+            if self.aluno:
+                self.ui.edtId.setText(str(self.aluno.id))
+                self.ui.edtNome.setText(self.aluno.nome)
                 self.ui.set_mode(True)
 
         def on_remover():
-            if self.indicacao:
-                self.indicacao.delete_instance()
+            if self.aluno:
+                self.aluno.delete_instance()
             
-            self.indicacao = None
+            self.aluno = None
             self.ui.edtId.setText(str(self.get_next_id()))
             self.ui.edtNome.clear()
             self.ui.set_mode(False)
@@ -62,10 +66,13 @@ class CadIndicacoes(QMainWindow):
             if (not self.ui.edtId.text()):
                 return
 
-            self.indicacao = Indicacoes.get(Indicacoes.id == int(self.ui.edtId.text()))
+            try:
+                self.aluno = Alunos.get(Alunos.id == int(self.ui.edtId.text()))
+            except:
+                pass
 
-            if self.indicacao:
-                self.ui.edtNome.setText(self.indicacao.nome)
+            if self.aluno:
+                self.ui.edtNome.setText(self.aluno.nome)
                 self.ui.set_mode(True)
 
         def on_sair():
@@ -79,7 +86,7 @@ class CadIndicacoes(QMainWindow):
         self.ui.edtId.editingFinished.connect(on_id_editing_finished)
 
     def get_next_id(self):
-        mid = Indicacoes.select(pw.fn.Max(Indicacoes.id)).scalar()
+        mid = Alunos.select(pw.fn.Max(Alunos.id)).scalar()
         return (mid if mid else 0) + 1
 
     def alert(self, message):
@@ -91,7 +98,7 @@ class CadIndicacoes(QMainWindow):
         if not event.isAutoRepeat():
             if event.key() == Qt.Key_Escape:
                 if not self.ui.edtId.isEnabled():
-                    self.indicacao = None
+                    self.aluno = None
                     self.ui.edtId.setText(str(self.get_next_id()))
                     self.ui.edtNome.clear()
                     self.ui.set_mode(False)

@@ -28,6 +28,11 @@
      <string>Cadastros</string>
     </property>
     <addaction name="actionIndica_es"/>
+    <addaction name="actionAlunos"/>
+    <addaction name="actionPacientes"/>
+    <addaction name="actionPanoramicas"/>
+    <addaction name="actionTomografias"/>
+    <addaction name="actionCefalogramas"/>
    </widget>
    <addaction name="menuCadastros"/>
   </widget>
@@ -35,6 +40,31 @@
   <action name="actionIndica_es">
    <property name="text">
     <string>Indicações</string>
+   </property>
+  </action>
+  <action name="actionAlunos">
+   <property name="text">
+    <string>Alunos</string>
+   </property>
+  </action>
+  <action name="actionPacientes">
+   <property name="text">
+    <string>Pacientes</string>
+   </property>
+  </action>
+  <action name="actionPanoramicas">
+   <property name="text">
+    <string>Panorâmicas</string>
+   </property>
+  </action>
+  <action name="actionTomografias">
+   <property name="text">
+    <string>Tomografias</string>
+   </property>
+  </action>
+  <action name="actionCefalogramas">
+   <property name="text">
+    <string>Cefalogramas</string>
    </property>
   </action>
  </widget>

@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QMessageBox
 from PyQt5.QtCore import Qt
 from ui.ui_main_window import Ui_MainWindow
 from cad_indicacoes import CadIndicacoes
+from cad_alunos import CadAlunos
 
 
 class MainWindow(QMainWindow):
@@ -16,7 +17,12 @@ class MainWindow(QMainWindow):
             indicacoes = CadIndicacoes()
             indicacoes.show()
 
+        def on_cad_alunos():
+            alunos = CadAlunos()
+            alunos.show()
+
         self.ui.actionIndica_es.triggered.connect(on_cad_indicacoes)
+        self.ui.actionAlunos.triggered.connect(on_cad_alunos)
 
     def keyPressEvent(self, event):
         if not event.isAutoRepeat():
