@@ -9,7 +9,7 @@ from model.parametrizacoes import Parametrizacoes
 from pesq_pacientes import PesqPacientes
 from pesq_alunos import PesqAlunos
 from cad_parametrizacoes import CadParametrizacoes
-# from pesq_panoramicas import PesqPanoramicas
+from pesq_tomografias import PesqTomografias
 
 class CadTomografias(QMainWindow):
     def __init__(self):
@@ -115,46 +115,55 @@ class CadTomografias(QMainWindow):
             self.indicacao = None
 
         def on_pesquisar():
-            # pesq = PesqPanoramicas()
-            # id = pesq.pesquisar()
+            pesq = PesqTomografias()
+            id = pesq.pesquisar()
 
-            # if id:
-            #     self.panoramica = Panoramicas.get(Panoramicas.id == int(id))
-            #     self.paciente = self.panoramica.paciente
-            #     self.aluno = self.panoramica.aluno
-            #     self.parametrizacao = self.panoramica.parametrizacao
+            if id:
+                self.tomografia = Tomografias.get(Tomografias.id == int(id))
+                self.paciente = self.tomografia.paciente
+                self.aluno = self.tomografia.aluno
+                self.parametrizacao = self.tomografia.parametrizacao
 
-            # if self.panoramica:
-            #     self.ui.edtId.setText(str(self.panoramica.id))
-                    
-            #     if self.panoramica.valor:
-            #         self.ui.edtValor.setText(str(self.panoramica.valor))
+            if self.tomografia:
+                self.ui.edtId.setText(str(self.tomografia.id))
 
-            #     self.ui.chkEntregue.setChecked(self.panoramica.data_entrega != None)
+                self.tomografia = Tomografias.get(Tomografias.id == int(id))
+                if self.tomografia.valor:
+                    self.ui.edtValor.setText(str(self.tomografia.valor))
 
-            #     if self.panoramica.data_entrega:
-            #         self.ui.edtEntrega.setDate(self.panoramica.data_entrega)
+                self.ui.chkEntregue.setChecked(self.tomografia.data_entrega != None)
 
-            #     self.ui.edtMotivo.setText(self.panoramica.motivo)
-            #     self.ui.edtRegiao.setText(self.panoramica.regiao)
+                if self.tomografia.data_entrega:
+                    self.ui.edtEntrega.setDate(self.tomografia.data_entrega)
 
-            #     index = self.ui.cboTipo.findText(self.panoramica.tipo)
-            #     if index >= 0:
-            #         self.ui.cboTipo.setCurrentIndex(index)
+                self.ui.edtMotivo.setText(self.tomografia.motivo)
+                self.ui.edtRegiao.setText(self.tomografia.regiao)
+                self.ui.edtElemento.setText(self.tomografia.elemento)
 
-            #     index = self.ui.cboEspecializacao.findText(self.panoramica.especializacao)
-            #     if index >= 0:
-            #         self.ui.cboEspecializacao.setCurrentIndex(index)
+                index = self.ui.cboTipo.findText(self.tomografia.tipo)
+                if index >= 0:
+                    self.ui.cboTipo.setCurrentIndex(index)
 
-            #     index = self.ui.cboModelo.findText(self.panoramica.modelo)
-            #     if index >= 0:
-            #         self.ui.cboModelo.setCurrentIndex(index)
+                index = self.ui.cboEspecializacao.findText(self.tomografia.especializacao)
+                if index >= 0:
+                    self.ui.cboEspecializacao.setCurrentIndex(index)
 
-            #     self.ui.edtPaciente.setText(self.paciente.nome)
-            #     self.ui.edtAluno.setText(self.aluno.nome)
+                index = self.ui.cboProporcao.findText(self.tomografia.proporcao)
+                if index >= 0:
+                    self.ui.cboProporcao.setCurrentIndex(index)
 
-            #     self.ui.set_mode(True)
-            pass
+                index = self.ui.cboAlvo.findText(self.tomografia.alvo)
+                if index >= 0:
+                    self.ui.cboAlvo.setCurrentIndex(index)
+
+                index = self.ui.cboResolucao.findText(self.tomografia.resolucao)
+                if index >= 0:
+                    self.ui.cboResolucao.setCurrentIndex(index)
+
+                self.ui.edtPaciente.setText(self.paciente.nome)
+                self.ui.edtAluno.setText(self.aluno.nome)
+
+                self.ui.set_mode(True)
 
         def on_remover():
             if self.tomografia:

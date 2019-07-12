@@ -1,18 +1,18 @@
 import peewee as pw
 from PyQt5.QtWidgets import QDialog, QTableWidgetItem
 from PyQt5.QtCore import Qt
-from ui.ui_pesq_panoramicas import Ui_PesqPanoramicas
-from model.panoramicas import Panoramicas
+from ui.ui_pesq_tomografias import Ui_PesqTomografias
+from model.tomografias import Tomografias
 from pesq_pacientes import PesqPacientes
 from model.pacientes import Pacientes
 from pesq_alunos import PesqAlunos
 from model.alunos import Alunos
 
-class PesqPanoramicas(QDialog):
+class PesqTomografias(QDialog):
     def __init__(self):
         super().__init__()
         self.setModal(True)
-        self.ui = Ui_PesqPanoramicas()
+        self.ui = Ui_PesqTomografias()
         self.ui.setupUi(self)
         self.paciente = None
         self.aluno = None
@@ -83,16 +83,16 @@ class PesqPanoramicas(QDialog):
         while self.ui.tableWidget.rowCount() > 0:
             self.ui.tableWidget.removeRow(0)
 
-        rows = (Panoramicas
-            .select(Panoramicas.id, Panoramicas.paciente.nome.alias('paciente'), Panoramicas.aluno.nome.alias('aluno'), Panoramicas.valor, Panoramicas.data_entrega))
+        rows = (Tomografias
+            .select(Tomografias.id, Tomografias.paciente.nome.alias('paciente'), Tomografias.aluno.nome.alias('aluno'), Tomografias.valor, Tomografias.data_entrega))
             
         if self.paciente:
-            rows = rows.where(Panoramicas.paciente == self.paciente.id)
+            rows = rows.where(Tomografias.paciente == self.paciente.id)
             
         if self.aluno:
-            rows = rows.where(Panoramicas.aluno == self.aluno.id)
+            rows = rows.where(Tomografias.aluno == self.aluno.id)
 
-        rows = rows.join(Pacientes).switch(Panoramicas).join(Alunos).dicts()
+        rows = rows.join(Pacientes).switch(Tomografias).join(Alunos).dicts()
 
         for row in rows:
             rowPosition = self.ui.tableWidget.rowCount()
