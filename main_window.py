@@ -5,6 +5,7 @@ from cad_indicacoes import CadIndicacoes
 from cad_alunos import CadAlunos
 from cad_pacientes import CadPacientes
 from cad_panoramicas import CadPanoramicas
+from cad_tomografias import CadTomografias
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -30,10 +31,16 @@ class MainWindow(QMainWindow):
             panoramicas = CadPanoramicas()
             panoramicas.show()
 
+        def on_cad_tomografias():
+            tomografias = CadTomografias()
+            print("Teste")
+            tomografias.show()
+
         self.ui.actionIndica_es.triggered.connect(on_cad_indicacoes)
         self.ui.actionAlunos.triggered.connect(on_cad_alunos)
         self.ui.actionPacientes.triggered.connect(on_cad_pacientes)
         self.ui.actionPanoramicas.triggered.connect(on_cad_panoramicas)
+        self.ui.actionTomografias.triggered.connect(on_cad_tomografias)
 
     def keyPressEvent(self, event):
         if not event.isAutoRepeat():
